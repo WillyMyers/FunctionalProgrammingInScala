@@ -6,6 +6,9 @@ object exercises {
 
   def main(args: Array[String]): Unit = {
     println(fib(5))
+    println(
+        isSorted(Array[Int](1,2,3,4,5,6), ((x:Int,y:Int) => x <=y))
+        )
   }
 
   /**
@@ -14,13 +17,26 @@ object exercises {
    */
     def fib(n: Int) = {
       @tailrec
-      def rec(n: Int, a: Int, b: Int): Int = {
+      def loop(n: Int, a: Int, b: Int): Int = {
         n match {
           case 0 => -1
           case 1 => b
-          case _ => rec(n - 1, a + b, a)
+          case _ => loop(n - 1, a + b, a)
         }
       }
-      rec(n, 1, 0)
+      loop(n, 1, 0)
     }
+    
+    /**
+     * A recursive function that checks an array is in sorted order
+     */
+    def isSorted[A](as : Array[A], f: (A,A) => Boolean): Boolean = {
+      def loop(n: Int): Boolean = {
+        if(n >= as.length -1) true
+        else if (f(as(n), as(n+1))) loop(n+1)
+        else false
+      }
+      loop(0)
+    }
+    
 }
