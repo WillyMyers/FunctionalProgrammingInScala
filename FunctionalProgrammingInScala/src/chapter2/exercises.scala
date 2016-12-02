@@ -14,6 +14,9 @@ object exercises {
     println(add4(8)) // should be 12
     println(add4(4)) // should be 8
     println(add4(2)) // should be
+    
+    val comp = compose((y: Double) => "Composed " + y.toString(), (x:Int) => x.toDouble)
+    println(comp(123))
   }
 
   /**
