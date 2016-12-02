@@ -5,6 +5,9 @@ object exercises {
   
   def main(args: Array[String]): Unit = {
     println(x)
+    val lst = List(1,2,3,4,5,6)
+    println(tail(lst))
+    println(setHead(lst, 10))
   }
   
   /**
