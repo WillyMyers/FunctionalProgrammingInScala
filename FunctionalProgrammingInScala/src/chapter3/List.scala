@@ -56,4 +56,14 @@ object List { // `List` companion object. Contains functions for creating and wo
       case _ => drop(tail(lst), n-1)
     }
   }
+  
+  /**
+   * 3.5 Removes elements from a list as long as they match a predicate
+   */
+  def dropWhile[A](lst: List[A], f: A => Boolean): List[A] = {
+    lst match {
+      case Nil => lst
+      case Cons(x, xs) => if(f(x)) dropWhile(xs, f) else lst 
+    }
+  }
 }
