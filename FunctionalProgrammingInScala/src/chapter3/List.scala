@@ -28,16 +28,19 @@ object List { // `List` companion object. Contains functions for creating and wo
      * 3.2 Tail of a List
      */
   def tail[A](lst: List[A]): List[A] = {
-      lst match {
+    lst match {
         case Nil => sys.error("List is empty")
         case Cons(x, xs) => xs
-      }
     }
+  }
   
   /**
    * 3.3 Change the head of a List
    */
   def setHead[A](lst: List[A], a: A): List[A] = {
-      Cons(a, tail(lst))
+    lst match {
+      case Nil => sys.error("List is empty")
+      case _ => Cons(a, tail(lst))
+    }  
   }
 }
