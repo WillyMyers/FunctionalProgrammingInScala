@@ -1,5 +1,7 @@
 package chapter3
 
+import scala.annotation.tailrec
+
 sealed trait List[+A] // `List` data type, parameterized on a type, `A`
 case object Nil extends List[Nothing] // A `List` data constructor representing the empty list
 /* Another data constructor, representing nonempty lists. Note that `tail` is another `List[A]`,
@@ -29,7 +31,7 @@ object List { // `List` companion object. Contains functions for creating and wo
      */
   def tail[A](lst: List[A]): List[A] = {
     lst match {
-        case Nil => sys.error("List is empty")
+        case Nil => lst
         case Cons(x, xs) => xs
     }
   }
@@ -39,8 +41,19 @@ object List { // `List` companion object. Contains functions for creating and wo
    */
   def setHead[A](lst: List[A], a: A): List[A] = {
     lst match {
-      case Nil => sys.error("List is empty")
+      case Nil => lst
       case _ => Cons(a, tail(lst))
     }  
+  }
+  
+  /**
+   * 3.4 Generalized version of drop which removes the first n elements
+   */
+  @tailrec
+  def drop[A](lst: List[A], n: Int): List[A] = {
+    n match {
+      case 0=> lst
+      case _ => drop(tail(lst), n-1)
+    }
   }
 }
