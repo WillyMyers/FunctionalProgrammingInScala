@@ -13,7 +13,7 @@ object exercises {
     val add4 = c(4) // our new function that adds 4 to whatever is passed to it
     println(add4(8)) // should be 12
     println(add4(4)) // should be 8
-    println(add4(2)) // should be 6
+    println(add4(2)) // should be
   }
 
   /**
@@ -56,5 +56,13 @@ object exercises {
      */
     def uncurry[A,B,C](f: A => B => C): (A,B) => C = {
       (a,b) => f(a)(b)
+    }
+    
+    /**
+     * 2.5 A higher order function that composes 2 functions
+     */
+    def compose[A,B,C](f: B => C, g: A => B): A => C = {
+      a => f(g(a))
+      
     }
 }
