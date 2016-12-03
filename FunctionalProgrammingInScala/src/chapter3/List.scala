@@ -66,4 +66,16 @@ object List { // `List` companion object. Contains functions for creating and wo
       case Cons(x, xs) => if(f(x)) dropWhile(xs, f) else lst 
     }
   }
+  
+  /**
+   * 3.6 Returns all but last element of a List 
+   */
+  //@tailrec - not tail recursive so will throw a StackOverflowError on a large list
+  def init[A](lst: List[A]): List[A] = {
+    lst match {
+      case Nil => lst
+      case Cons(x,Nil) => Nil
+      case Cons(x,xs) => Cons(x,init(xs))     
+    }
+  }
 }

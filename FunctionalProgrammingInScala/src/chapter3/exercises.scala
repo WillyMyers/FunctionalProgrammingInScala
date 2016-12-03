@@ -12,6 +12,7 @@ object exercises {
     println(drop(Nil, 0))
     val f =  (x:Int) => x < 3
     println(dropWhile(lst, f))
+    println(init(lst))
   }
   
   /**
