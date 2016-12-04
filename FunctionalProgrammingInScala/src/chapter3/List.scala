@@ -78,4 +78,33 @@ object List { // `List` companion object. Contains functions for creating and wo
       case Cons(x,xs) => Cons(x,init(xs))     
     }
   }
+  
+  def foldRight[A,B](as: List[A], z: B)(f: (A,B) => B): B = {
+    as match {
+      case Nil => z
+      case Cons(x, xs) => f(x, foldRight(xs, z)(f))
+    }
+  }
+  
+  def sum2(lst: List[Int]) = {
+    foldRight(lst, 0)(_+_)
+  }
+  
+  def product2(lst: List[Double]) = {
+    foldRight(lst, 1.0)(_*_)
+  }
+  
+  /**
+   * 3.9 Length of a list using foldRight
+   */
+  def length[A](lst: List[A]): Int = {
+    foldRight(lst, 0)((x,y) => y+1)
+  }
+    
+  /**
+   * 3.10 FoldLeft tail recursive
+   */
+  def foldLeft[A,B](as: List[A], z: B)(f: (B, A) => B): B = {
+    
+  }
 }

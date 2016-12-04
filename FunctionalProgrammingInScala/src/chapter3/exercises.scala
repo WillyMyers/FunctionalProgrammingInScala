@@ -6,6 +6,7 @@ object exercises {
   def main(args: Array[String]): Unit = {
     println(x)
     val lst = List(1,2,3,4,5,6)
+    val lstDbl = List(1.0,2.0,3.0,4.0,5.0,6.0)
     println(tail(lst))
     println(setHead(lst, 10))
     println(drop(lst, 3))
@@ -13,6 +14,15 @@ object exercises {
     val f =  (x:Int) => x < 3
     println(dropWhile(lst, f))
     println(init(lst))
+    println(sum2(lst))
+    println(sum(lst))
+    println(product(lstDbl))
+    println(product2(lstDbl))
+    
+    //3.8
+    println("Exercise 3.8: " + foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_)))
+    
+    println(length(lst)) // should print 6
   }
   
   /**
