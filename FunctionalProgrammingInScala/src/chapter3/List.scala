@@ -104,7 +104,26 @@ object List { // `List` companion object. Contains functions for creating and wo
   /**
    * 3.10 FoldLeft tail recursive
    */
+  @tailrec
   def foldLeft[A,B](as: List[A], z: B)(f: (B, A) => B): B = {
-    
+    as match {
+      case Nil => z
+      case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
+    }
+  }
+  
+  /**
+   * 3.11 Implement sum, product, and length using foldLeft
+   */
+  def sum3(lst: List[Int]) = {
+    foldLeft(lst, 0)(_+_)
+  }
+  
+  def product3(lst: List[Double]) = {
+    foldLeft(lst, 1.0)(_*_)
+  }
+  
+  def length3[A](lst: List[A]): Int = {
+    foldLeft(lst, 0)((x,y) => x+1)
   }
 }

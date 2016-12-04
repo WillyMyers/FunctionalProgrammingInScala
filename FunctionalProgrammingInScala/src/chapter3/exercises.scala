@@ -14,15 +14,19 @@ object exercises {
     val f =  (x:Int) => x < 3
     println(dropWhile(lst, f))
     println(init(lst))
-    println(sum2(lst))
-    println(sum(lst))
-    println(product(lstDbl))
-    println(product2(lstDbl))
+    println(sum2(lst)) // 21
+    println(sum(lst)) // 21
+    println(product(lstDbl)) //720
+    println(product2(lstDbl)) //720
     
     //3.8
     println("Exercise 3.8: " + foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_)))
     
     println(length(lst)) // should print 6
+    
+    println(sum3(lst)) // 21
+    println(product3(lstDbl)) //720
+    println(length3(lst)) // should print 6
   }
   
   /**
