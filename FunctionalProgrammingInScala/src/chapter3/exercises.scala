@@ -27,6 +27,8 @@ object exercises {
     println(sum3(lst)) // 21
     println(product3(lstDbl)) //720
     println(length3(lst)) // should print 6
+    
+    println(reverse(lst))
   }
   
   /**

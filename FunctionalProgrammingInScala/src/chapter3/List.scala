@@ -126,4 +126,11 @@ object List { // `List` companion object. Contains functions for creating and wo
   def length3[A](lst: List[A]): Int = {
     foldLeft(lst, 0)((x,y) => x+1)
   }
+  
+  /**
+   * 3.12 Reverse a list, try using fold
+   */
+  def reverse[A](lst:List[A]) = {
+    foldLeft(lst, List[A]())((x,y)=> Cons(y, x))
+  }
 }
