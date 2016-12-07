@@ -60,6 +60,7 @@ object List { // `List` companion object. Contains functions for creating and wo
   /**
    * 3.5 Removes elements from a list as long as they match a predicate
    */
+  @tailrec
   def dropWhile[A](lst: List[A], f: A => Boolean): List[A] = {
     lst match {
       case Nil => lst
@@ -79,6 +80,7 @@ object List { // `List` companion object. Contains functions for creating and wo
     }
   }
   
+  //@tailrec - not tail recursive
   def foldRight[A,B](as: List[A], z: B)(f: (A,B) => B): B = {
     as match {
       case Nil => z
@@ -133,4 +135,19 @@ object List { // `List` companion object. Contains functions for creating and wo
   def reverse[A](lst:List[A]) = {
     foldLeft(lst, List[A]())((x,y)=> Cons(y, x))
   }
+  
+  /**
+   * 3.13 Implement foldRight in terms of foldLeft
+   */
+  def foldRight2[A,B](as: List[A], z: B)(f: (A,B) => B): B = {
+    foldLeft(reverse(as), z)((b,a) => f(a,b))
+  }
+  
+  /**
+   * 3.14 Implement append in terms of foldLeft or foldRight
+   */
+  def append[A](left: List[A], right: List[A]): List[A] = {
+    foldRight2(left, right)(Cons(_,_))
+  }
+
 }
